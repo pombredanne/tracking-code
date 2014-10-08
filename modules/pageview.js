@@ -1,4 +1,4 @@
-var _PageView = function(client_id, shortID) {
+var _PageView = function(client_id, shortId) {
     // Visitor are returning visitor by default
     var new_visitor = 0;
     var returning_visitor = 1;
@@ -15,22 +15,22 @@ var _PageView = function(client_id, shortID) {
         returning_visitor = 0;
         document.cookie = shortId+'_r=1; expires=Sun, 18 Jan 2038 00:00:00 GMT; path=/';
     }
-    var args = '';
-    var e = encodeURIComponent;
-    args += '?id='+client_id;
-    args += '&nv='+new_visitor;
-    args += '&rv='+returning_visitor;
-    args += '&location='+e(document.location);
-    args += '&width='+screen.width;
-    args += '&height='+screen.height;
-    args += '&hl='+(typeof(history) != 'undefined' && typeof(history.length) != 'undefined') ? 0 : history.length;
-    args += '&ua='+e(navigator.userAgent);
-    var referrer = (typeof(document.referrer) == 'undefined') ? '' : document.referrer;
-    args += '&referrer='+e(referrer);
-    var cookie = 'na';
+    var pv = {id: Utils.guid(),
+        ts: Utils.now(),
+	site_id: client_id,
+	nv: new_visitor,
+	rv: returning_visitor,
+    	location: window.location.href,
+	width: screen.width,
+	height: screen.height,
+	hl: (typeof(history) != 'undefined' && typeof(history.length) != 'undefined') ? 0 : history.length,
+	ua: navigator.userAgent,
+	referrer: (typeof(document.referrer) == 'undefined') ? '' : document.referrer,
+	cookie: 'na'
+    };
     if (typeof(navigator.cookieEnabled) != 'undefined') {
-        cookie = navigator.cookieEnabled ? 'y' : 'n';
+        pv.cookie = navigator.cookieEnabled ? 'y' : 'n';
     }
-    args += '&cookie='+cookie;
+    return pv;
 };
 

@@ -14,7 +14,7 @@ gulp.task('default', function() {
   });
   return gulp.src(["version.js", "bower_components/json2/json2.js",
         "bower_components/atomic/dist/atomic.js", "lib/*.js", "modules/*.js", "main.js"])
-     .pipe(uglify())
      .pipe(concat('all.min.js'))
+     .pipe(uglify())
      .pipe(gulp.dest('dist'));
 });

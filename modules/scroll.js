@@ -31,7 +31,7 @@ Basiclytics._ScrollTracker = function() {
             if (isThrottled || disabled) { return; }
             isThrottled = true;
             setTimeout(function () { isThrottled = false; }, throttleDuration);
-            posPercent = verge.scrollY() + verge.viewportH();
+            posPercent = Basiclytics.Utils.scrollY() + Basiclytics.Utils.viewportHeight();
             index = getIndex();
             Object.keys(index).forEach(function(cpercent) {
                // console.log("pos:"+posPercent+"/index:"+index[cpercent]+"/percent:"+cpercent)

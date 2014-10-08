@@ -12,8 +12,7 @@ gulp.task('default', function() {
       }
     });
   });
-  return gulp.src(["init.js", "version.js", "bower_components/verge/verge.js",
-        "bower_components/json2/json2.js", "lib/*.js", "modules/*.js", "main.js"])
+  return gulp.src(["init.js", "version.js", "bower_components/json2/json2.js", "lib/*.js", "modules/*.js", "main.js"])
      .pipe(concat('all.min.js'))
      .pipe(uglify())
      .pipe(gulp.dest('dist'));

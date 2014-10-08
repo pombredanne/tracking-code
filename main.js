@@ -1,4 +1,3 @@
-atomic.get('http://ip.jsontest.com').success(function (resp) {
-console.log(resp);
+Basiclytics.PubSub.sub("/some", function(msg){
+  console.log("/some:" + msg);
 });
-console.log("v"+Basiclytics.version);

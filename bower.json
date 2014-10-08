@@ -19,7 +19,6 @@
     "tests"
   ],
   "dependencies": {
-    "atomic": "https://github.com/toddmotto/atomic.git#~1.0.0",
     "json2": "*",
     "verge": "~1.9.1"
   }

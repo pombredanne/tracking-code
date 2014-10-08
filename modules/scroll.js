@@ -23,8 +23,8 @@ Basiclytics._ScrollTracker = function() {
             marks.forEach(function(percent) {
                 out[percent+'%'] = parseInt(docHeight * percent / 100, 10);
             });
-            // Remove 10px to the 100%
-            out['100%'] = out['100%'] - 20;
+            // Remove 30px to the 100%
+            out['100%'] = out['100%'] - 30;
             return out;
         };
         var trackScroll = function() {

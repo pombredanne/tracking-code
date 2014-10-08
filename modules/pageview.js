@@ -18,6 +18,7 @@ Basiclytics._PageView = function(client_id, shortId) {
     var pv = {id: Basiclytics.Utils.guid(),
         ts: Basiclytics.Utils.now(),
 	site_id: client_id,
+	session_id: Basiclytics.Session.id(),
 	nv: new_visitor,
 	rv: returning_visitor,
     	location: window.location.href,

@@ -6,7 +6,7 @@ Basiclytics._ScrollTracker = function() {
             throttleDuration = 200; //ms
         // Default callback
         this.callback = function(data) {
-            console.log("scrollTracker: "+data);
+            console.log("scrollTracker: "+data+"%");
         };
 
         var getDocHeight = function() {
@@ -21,10 +21,10 @@ Basiclytics._ScrollTracker = function() {
             var out = {};
             var marks = [25, 50, 75, 100];
             marks.forEach(function(percent) {
-                out[percent+'%'] = parseInt(docHeight * percent / 100, 10);
+                out[percent] = parseInt(docHeight * percent / 100, 10);
             });
             // Remove 30px to the 100%
-            out['100%'] = out['100%'] - 30;
+            out[100] = out[100] - 30;
             return out;
         };
         var trackScroll = function() {
@@ -39,7 +39,7 @@ Basiclytics._ScrollTracker = function() {
                     oldmax = max;
                     max = Math.max(max, index[cpercent]);
                     if (max != oldmax) {
-                        if (cpercent == "100%") {
+                        if (cpercent == 100) {
                             disabled = true;
                         }
                         that.callback(cpercent);
@@ -48,7 +48,7 @@ Basiclytics._ScrollTracker = function() {
             });
         };
         this.start = function() {
-            that.callback("0%");
+            that.callback(0);
             window.onscroll = trackScroll;
         };
 	return this;

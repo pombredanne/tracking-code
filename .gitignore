@@ -1,4 +1,5 @@
 dist
+version.js
 bower_components
 node_modules
 *.min.js

@@ -1,8 +1,5 @@
-(function(){
-    var client_id = document.TSanalytics_id; 
-    var shortId = 'TSanalytics';
-    // Visitor are returning visitor by default,
-    // so we don't exaggerate the unique visitors count
+var _PageView = function(client_id, shortID) {
+    // Visitor are returning visitor by default
     var new_visitor = 0;
     var returning_visitor = 1;
     // Check if the visitor a new visitor
@@ -35,6 +32,5 @@
         cookie = navigator.cookieEnabled ? 'y' : 'n';
     }
     args += '&cookie='+cookie;
-    sendData(args);
-})();
+};
 

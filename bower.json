@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "atomic": "https://github.com/toddmotto/atomic.git#~1.0.0"
+    "atomic": "https://github.com/toddmotto/atomic.git#~1.0.0",
+    "json2": "*"
   }
 }

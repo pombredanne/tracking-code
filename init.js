@@ -1,0 +1,1 @@
+var Basiclytics = Basiclytics || {};

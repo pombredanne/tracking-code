@@ -6,13 +6,13 @@ var git = require('git-rev');
 gulp.task('default', function() {
 
   git.short(function (str) {
-    fs.writeFile("version.js", "var _trackerVersion = '"+str+"';", function(err) {
+    fs.writeFile("version.js", "Basiclytics.version = '"+str+"';", function(err) {
       if(err) {
         console.log(err);
       }
     });
   });
-  return gulp.src(["version.js", "bower_components/json2/json2.js",
+  return gulp.src(["init.js", "version.js", "bower_components/json2/json2.js",
         "bower_components/atomic/dist/atomic.js", "lib/*.js", "modules/*.js", "main.js"])
      .pipe(concat('all.min.js'))
      .pipe(uglify())

@@ -1,4 +1,4 @@
-var _PageView = function(client_id, shortId) {
+Basiclytics._PageView = function(client_id, shortId) {
     // Visitor are returning visitor by default
     var new_visitor = 0;
     var returning_visitor = 1;
@@ -15,8 +15,8 @@ var _PageView = function(client_id, shortId) {
         returning_visitor = 0;
         document.cookie = shortId+'_r=1; expires=Sun, 18 Jan 2038 00:00:00 GMT; path=/';
     }
-    var pv = {id: Utils.guid(),
-        ts: Utils.now(),
+    var pv = {id: Basiclytics.Utils.guid(),
+        ts: Basiclytics.Utils.now(),
 	site_id: client_id,
 	nv: new_visitor,
 	rv: returning_visitor,

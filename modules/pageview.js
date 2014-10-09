@@ -1,7 +1,9 @@
-Basiclytics._PageView = function(client_id, shortId) {
+Basiclytics._PageView = function() {
     // Visitor are returning visitor by default
-    var new_visitor = 0;
-    var returning_visitor = 1;
+    var shortId = 'basiclytics',
+      client_id = Basiclytics._SiteId, 
+      new_visitor = 0,
+      returning_visitor = 1;
     // Check if the visitor a new visitor
     if (document.cookie.indexOf(shortId+'_u=') == -1) {
         new_visitor = 1;

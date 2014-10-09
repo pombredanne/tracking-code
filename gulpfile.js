@@ -6,7 +6,7 @@ var git = require('git-rev');
 gulp.task('default', function() {
 
   git.short(function (str) {
-    fs.writeFile("version.js", "Basiclytics.version = '"+str+"';", function(err) {
+    fs.writeFile("version.js", "Basiclytics.version = '0.0.0-"+str+"';", function(err) {
       if(err) {
         console.log(err);
       }

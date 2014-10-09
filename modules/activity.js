@@ -7,7 +7,7 @@
 Basiclytics.Activity = (function() {
   var paused = false, // holds the ticker status
     hidden = false, // wether the page is hidden or not
-    idleTime = 10, // nunber of seconds before a visitor is considered idle
+    idleTime = 30, // number of seconds before a visitor is considered idle
     activeTime = 0, // number of seconds the visitor has been active so far
     lastActiveTime = 0, // holds the last reported active time to decide wether or not publish new data
     lastActivity = Basiclytics.Utils.now(), // timestamp of the visitor last activity
@@ -18,13 +18,13 @@ Basiclytics.Activity = (function() {
        if (Basiclytics.Utils.now() - lastActivity > idleTime) {
          if (!paused) {
            paused = true;
-           console.log("idle!");
+           Basiclytics.debug("idle!");
            stopTick();
          }
        } else {
           if (paused && !hidden) {
             paused = false;
-            console.log("back!");
+            Basiclytics.debug("back!");
             startTick();
           }
        }
@@ -51,7 +51,7 @@ Basiclytics.Activity = (function() {
       isThrottled = true;
       setTimeout(function () { isThrottled = false; }, throttleDelay);
       lastActivity = Basiclytics.Utils.now();
-      console.log("activity");
+      Basiclytics.debug("activity");
     },
     publisherTimer = setInterval(function() {
       if (lastActiveTime != activeTime) {

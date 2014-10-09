@@ -1,4 +1,4 @@
 var Basiclytics = Basiclytics || {};
 Basiclytics.Store = Basiclytics.Store || {};
-Basiclytics._channels = {};
+Basiclytics._DebugMode = false;
 Basiclytics._APIendpoint = "";

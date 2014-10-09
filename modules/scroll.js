@@ -3,10 +3,11 @@ Basiclytics._ScrollTracker = function() {
             max = -1,
             disabled = false,
             isThrottled = false,
-            throttleDuration = 200; //ms
+            throttleDuration = 125; //ms
         // Default callback
         this.callback = function(data) {
-            console.log("scrollTracker: "+data+"%");
+            Basiclytics.debug("scrollTracker: "+data+"%");
+            Basiclytics.PubSub.pub("/events", ["s", {s: data, session_id: Basiclytics.Session.id()}]);
         };
 
         var getDocHeight = function() {
@@ -33,12 +34,12 @@ Basiclytics._ScrollTracker = function() {
             setTimeout(function () { isThrottled = false; }, throttleDuration);
             posPercent = Basiclytics.Utils.scrollY() + Basiclytics.Utils.viewportHeight();
             index = getIndex();
-            Object.keys(index).forEach(function(cpercent) {
+            Object.keys(index).reverse().forEach(function(cpercent) {
                // console.log("pos:"+posPercent+"/index:"+index[cpercent]+"/percent:"+cpercent)
                 if (posPercent >= index[cpercent]) {
                     oldmax = max;
                     max = Math.max(max, index[cpercent]);
-                    if (max != oldmax) {
+                    if (max > oldmax) {
                         if (cpercent == 100) {
                             disabled = true;
                         }

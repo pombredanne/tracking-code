@@ -34,4 +34,10 @@ Basiclytics._PageView = function(client_id, shortId) {
     }
     return pv;
 };
-
+Basiclytics.pageview = function() {
+  pv = Basiclytics._PageView();
+  Basiclytics.debug("pageview()");
+  Basiclytics.debug(pv);
+  Basiclytics.PubSub.pub("/events", ["pv", {pv: pv, session_id: Basiclytics.Session.id()}]);
+  return pv;
+};

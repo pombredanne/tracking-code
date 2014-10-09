@@ -3,7 +3,7 @@ Basiclytics._ScrollTracker = function() {
             max = -1,
             disabled = false,
             isThrottled = false,
-            throttleDuration = 125; //ms
+            throttleDelay = 125; //ms
         // Default callback
         this.callback = function(data) {
             Basiclytics.debug("scrollTracker: "+data+"%");
@@ -31,7 +31,7 @@ Basiclytics._ScrollTracker = function() {
         var trackScroll = function() {
             if (isThrottled || disabled) { return; }
             isThrottled = true;
-            setTimeout(function () { isThrottled = false; }, throttleDuration);
+            setTimeout(function () { isThrottled = false; }, throttleDelay);
             posPercent = Basiclytics.Utils.scrollY() + Basiclytics.Utils.viewportHeight();
             index = getIndex();
             Object.keys(index).reverse().forEach(function(cpercent) {
@@ -49,7 +49,7 @@ Basiclytics._ScrollTracker = function() {
             });
         };
         this.start = function() {
-            Basiclytics.Utils.addListener(window, "scroll", trackScroll);
+             Basiclytics.Utils.addListener(window, "scroll", trackScroll);
              window.onscroll = trackScroll;
         };
 	return this;

@@ -48,7 +48,8 @@ Basiclytics._ScrollTracker = function() {
             });
         };
         this.start = function() {
-            window.onscroll = trackScroll;
+            Basiclytics.Utils.addListener(window, "scroll", trackScroll);
+             window.onscroll = trackScroll;
         };
 	return this;
 };

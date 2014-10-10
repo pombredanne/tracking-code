@@ -53,18 +53,20 @@ Basiclytics.Activity = (function() {
       lastActivity = Basiclytics.Utils.now();
       Basiclytics.debug("activity");
     },
-    publisherTimer = setInterval(function() {
+    publish = function() {
       // only publish result if the activeTime increased of at least 3 seconds to save some requests
       if (activeTime - lastActiveTime > 3) {
         lastActiveTime = activeTime;
         Basiclytics.PubSub.pub("/events", ["t", {t: activeTime, session_id: Basiclytics.Session.id()}]);
       }
-    }, 10000);
+    },
+    publisherTimer = setInterval(publish, 10000);
   // bind some events to monitor the visitor activity
   Basiclytics.Utils.addListener(document, "click", updateActivity); 
   Basiclytics.Utils.addListener(document, "keydown", updateActivity);
   Basiclytics.Utils.addListener(window, "mousemove", updateActivity);
   Basiclytics.Utils.addListener(window, "scroll", updateActivity);
+  Basiclytics.Utils.addListener(window, "unload", publish);
   // also uses the Page Visibility API, if available,
   // to set the visitor idle when the page is hidden.
   Basiclytics.Utils.visibilityChange(function(isHidden) {

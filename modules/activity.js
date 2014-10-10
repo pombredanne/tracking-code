@@ -66,7 +66,6 @@ Basiclytics.Activity = (function() {
   Basiclytics.Utils.addListener(document, "keydown", updateActivity);
   Basiclytics.Utils.addListener(window, "mousemove", updateActivity);
   Basiclytics.Utils.addListener(window, "scroll", updateActivity);
-  Basiclytics.Utils.addListener(window, "unload", publish);
   // also uses the Page Visibility API, if available,
   // to set the visitor idle when the page is hidden.
   Basiclytics.Utils.visibilityChange(function(isHidden) {

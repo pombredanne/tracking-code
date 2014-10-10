@@ -54,7 +54,8 @@ Basiclytics.Activity = (function() {
       Basiclytics.debug("activity");
     },
     publisherTimer = setInterval(function() {
-      if (lastActiveTime != activeTime) {
+      // only publish result if the activeTime increased of at least 3 seconds to save some requests
+      if (activeTime - lastActiveTime > 3) {
         lastActiveTime = activeTime;
         Basiclytics.PubSub.pub("/events", ["t", {t: activeTime, session_id: Basiclytics.Session.id()}]);
       }

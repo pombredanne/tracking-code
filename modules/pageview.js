@@ -17,8 +17,7 @@ Basiclytics._PageView = function() {
         returning_visitor = 0;
         document.cookie = shortId+'_r=1; expires=Sun, 18 Jan 2038 00:00:00 GMT; path=/';
     }
-    var pv = {id: Basiclytics.Utils.guid(),
-        ts: Basiclytics.Utils.now(),
+    var pv = {ts: Basiclytics.Utils.now(),
 	site_id: client_id,
 	session_id: Basiclytics.Session.id(),
 	nv: new_visitor,

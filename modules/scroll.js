@@ -7,7 +7,7 @@ Basiclytics._ScrollTracker = function() {
         // Default callback
         this.callback = function(data) {
             Basiclytics.debug("scrollTracker: "+data+"%");
-            Basiclytics.PubSub.pub("/events", ["s", {s: data, session_id: Basiclytics.Session.id()}]);
+            Basiclytics.PubSub.pub("/events", ["s", {ts: Basiclytics.Utils.now(), s: data, session_id: Basiclytics.Session.id()}]);
         };
 
         var getDocHeight = function() {

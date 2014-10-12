@@ -62,7 +62,6 @@ Basiclytics.Activity = (function() {
           t: activeTime - lastActiveTime,
           session_id: Basiclytics.Session.id()
         };
-        Basiclytics.debug(payload);
         Basiclytics.PubSub.pub("/events", ["t", payload]);
         lastActiveTime = activeTime;
       }

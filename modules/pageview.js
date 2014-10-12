@@ -37,8 +37,6 @@ Basiclytics._PageView = function() {
 };
 Basiclytics.pageview = function() {
   pv = Basiclytics._PageView();
-  Basiclytics.debug("pageview()");
-  Basiclytics.debug(pv);
-  Basiclytics.PubSub.pub("/events", ["pv", {pv: pv, session_id: Basiclytics.Session.id()}]);
+  Basiclytics.PubSub.pub("/events", ["pv", pv]);
   return pv;
 };

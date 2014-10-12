@@ -56,8 +56,9 @@ Basiclytics.Activity = (function() {
     publish = function() {
       // only publish result if the activeTime increased of at least 3 seconds to save some requests
       if (activeTime - lastActiveTime > 3) {
+        // publish the delta since the last request
+        Basiclytics.PubSub.pub("/events", ["t", {t: activeTime - lastActiveTime, session_id: Basiclytics.Session.id()}]);
         lastActiveTime = activeTime;
-        Basiclytics.PubSub.pub("/events", ["t", {t: activeTime, session_id: Basiclytics.Session.id()}]);
       }
     },
     publisherTimer = setInterval(publish, 10000);

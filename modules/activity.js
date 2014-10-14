@@ -58,9 +58,7 @@ Basiclytics.Activity = (function() {
       if (activeTime - lastActiveTime > 3) {
         // publish the delta since the last request
         payload = {
-          ts: Basiclytics.Utils.now(),
           t: activeTime - lastActiveTime,
-          session_id: Basiclytics.Session.id()
         };
         Basiclytics.PubSub.pub("/events", ["t", payload]);
         lastActiveTime = activeTime;

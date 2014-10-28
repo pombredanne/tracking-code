@@ -6,7 +6,7 @@ Basiclytics._ScrollTracker = function() {
             throttleDelay = 125; //ms
         // Default callback
         this.callback = function(data) {
-            Basiclytics.PubSub.pub("/events", ["s", {s: data}]);
+            Basiclytics.PubSub.pub("/events", ["s", {s: parseInt(data)}]);
         };
 
         var getDocHeight = function() {

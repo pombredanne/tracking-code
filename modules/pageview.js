@@ -19,6 +19,7 @@ Basiclytics._PageView = function() {
     }
     var pv = {
 	site_id: client_id,
+	title: document.title,
 	nv: new_visitor,
 	rv: returning_visitor,
     	location: window.location.href,
@@ -27,7 +28,8 @@ Basiclytics._PageView = function() {
 	hl: (typeof(history) != 'undefined' && typeof(history.length) != 'undefined') ? 0 : history.length,
 	ua: navigator.userAgent,
 	referrer: (typeof(document.referrer) == 'undefined') ? '' : document.referrer,
-	cookie: 'na'
+	cookie: 'na',
+        localStorage: Basiclytics.Utils.Storage,
     };
     if (typeof(navigator.cookieEnabled) != 'undefined') {
         pv.cookie = navigator.cookieEnabled ? 'y' : 'n';

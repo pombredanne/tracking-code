@@ -6,7 +6,9 @@ Basiclytics.PubSub.sub("/events", function(etype, msg) {
   }
   msg.id = Basiclytics.Utils.guid();
   msg.ts = Basiclytics.Utils.now();
-  msg.session_id =  Basiclytics.Session.id();
+  if (etype != "pv") {
+    msg.pv_id =  Basiclytics.Session.id();
+  }
   Basiclytics.Utils.sendData(etype, msg);
 });
 Basiclytics.pageview();

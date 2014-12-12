@@ -7,5 +7,8 @@ Basiclytics.Session = (function() {
   sessionManager.id = function() {
     return Basiclytics.Store.sessionId;
   };
+  sessionManager.newRoot = function() {
+    return Basiclytics.Utils.guid() + '.' + Basiclytics.Utils.now();
+  };
   return sessionManager;
 })();
